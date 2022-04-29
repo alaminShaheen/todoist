@@ -1,0 +1,52 @@
+{
+  "root": "apps/todoist-server",
+  "sourceRoot": "apps/todoist-server/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/todoist-server",
+        "main": "apps/todoist-server/src/main.ts",
+        "tsConfig": "apps/todoist-server/tsconfig.app.json",
+        "assets": ["apps/todoist-server/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/todoist-server/src/environments/environment.ts",
+              "with": "apps/todoist-server/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:node",
+      "options": {
+        "buildTarget": "todoist-server:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/todoist-server/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/todoist-server"],
+      "options": {
+        "jestConfig": "apps/todoist-server/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

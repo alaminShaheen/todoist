@@ -1,0 +1,28 @@
+{
+  "root": "apps/todoist-client-e2e",
+  "sourceRoot": "apps/todoist-client-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/todoist-client-e2e/cypress.json",
+        "devServerTarget": "todoist-client:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "todoist-client:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/todoist-client-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["todoist-client"]
+}

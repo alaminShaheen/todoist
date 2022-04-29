@@ -1,3 +1,17 @@
 {
-  "singleQuote": true
+    "endOfLine": "lf",
+    "printWidth": 95,
+    "tabWidth": 4,
+    "trailingComma": "es5",
+    "importOrder": [
+        "<THIRD_PARTY_MODULES>",
+        "^context/(.*)$",
+        "^services/(.*)$",
+        "^hooks/(.*)$",
+        "^components/(.*)$",
+        "^models/(.*)$",
+        "^constants/(.*)$",
+        "^[./]"
+    ],
+    "importOrderSortSpecifiers": true
 }
